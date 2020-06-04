@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+<div class="container-fluid mt-5">
+    <div class="jumbotron">
+        <h1>Le site incroyable qui marche presque</h1>
+        <p>Bienvenu sur ce site incroyable réalisé avec Symfony, ne t'inquiète pas ça va bien se passer hein, ça va bien
+            se passer. Tu veux me péter les jambes ? Pas de problème je descends à Colmar et on pourra en parler.</p>
+    </div>
+</div>
+<div class="container">
+    <div class="row row-cols-3 text-center mx-auto">
+        {% for figure in collection %}
+            {{ include('collection/_collection.html.twig') }}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

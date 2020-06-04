@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription / Connexion{% endblock %}
+
+{% block body %}
+<div class="container-fluid mt-5">
+    <div class="jumbotron">
+        <h1>Le site incroyable qui marche presque</h1>
+        <p>Vous êtes à présent sur l'interface d'inscription ! Si vous possédez déjà un compte, merci de cliquer ici.</p>
+    </div>
+</div>
+<div class="container">
+    {% for message in app.flashes('success') %}
+    <div class="alert alert-success">
+        {{ message }}
+    </div>
+    {% endfor %}
+    <div class="row">
+        <div class="col-6 text-center my-auto">
+            <h1>Inscription</h1>
+        </div>
+        <div class="col-6 my-5 border-left">
+            {{ include('users/_form.html.twig', {button: 'S\'inscrire'}) }}
+        </div> 
+    </div>
+    <div class="row mt-5">
+        <div class="col-12 text-center">
+            <h2>Vous avez déjà un compte ? Connectez-vous !</h2>
+            <a href="{{ path('login') }}" class="btn btn-primary mt-3">Connexion</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil administrateur{% endblock %}
+
+{% block body %}
+<div class="container-fluid mt-5">
+    <div class="jumbotron">
+        <h1>Le site incroyable qui marche presque</h1>
+        <p>Bienvenu sur la partie Administrateur du site qui n'avait au départ aucune vocation et qui finit maintenant
+            comme liste de figurine.</p>
+    </div>
+</div>
+<div class="container">
+    {% for message in app.flashes('success') %}
+    <div class="alert alert-success">
+        {{ message }}
+    </div>
+    {% endfor %}
+    <div class="row text-center mx-auto my-5">
+        <div class="col-7">
+            <h1 class="mb-5">Liste des options</h1>
+        </div>
+        <div class="col-5">
+            <a class="btn btn-primary mt-2 w-100" href="{{ path('option.new') }}">Ajouter une option</a>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for value in options %}
+                <tr>
+                    <td>{{ value.name }}</td>
+                    <td>
+                        <div class="row">
+                            <div class="col-6">
+                                <a href="{{ path('option.edit', {id: value.id}) }}"
+                                    class="btn btn-primary">Modifier</a>
+                            </div>
+                            <div class="col-6">
+                                <form method="POST" action="{{ path('option.delete', {id: value.id}) }}"
+                                    onsubmit="return confirm('Souhaitez-vous réellement supprimer cette option ?')">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ value.id) }}">
+                                    <button class="btn btn-danger">Supprimer</button>
+                                </form>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="col-12 text-right">
+            <a class="btn btn-primary w-100" href="{{ path('option.new') }}">Ajouter une option</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

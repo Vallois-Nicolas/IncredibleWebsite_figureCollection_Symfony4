@@ -1,0 +1,17 @@
+{{ form_start(form) }}
+<div class="row">
+    <div class="col-6">
+        {{ form_row(form.title) }}
+        {{ form_row(form.description) }}
+        {{ form_row(form.dimensions) }}
+        {{ form_row(form.partsNumber) }}
+    </div>
+    <div class="col-6">
+        {{ form_row(form.price) }}
+        {{ form_row(form.possession) }}
+        {{ form_row(form.image) }}
+        {{ form_row(form.options) }}
+    </div>
+    <button class="btn btn-primary w-100">{{ button|default('Enregistrer') }}</button>
+</div>
+{{ form_end(form) }}

@@ -1,0 +1,5 @@
+{{ form_start(form) }}
+        {{ form_row(form.username) }}
+        {{ form_row(form.password) }}
+        <button class="btn btn-primary mt-3">{{ button|default('Enregistrer') }}</button>
+{{ form_end(form) }}

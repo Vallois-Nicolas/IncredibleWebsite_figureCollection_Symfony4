@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title figure.title %}
+
+{% block body %}
+<div class="container text-center">
+    <h1 class="mt-5">{{ figure.title }}</h1>
+    <div class="row mt-5">
+        <div class="col-6">
+            <img src="{{ figure.image }}" alt="Image de la figurine {{ figure.title }}" class="w-100">
+        </div>
+        <div class="col-6  text-left">
+            <h2>Détails :</h2>
+            <ul>
+                <li>Description : {{ figure.description | nl2br }}</li>
+                <li>Hauteur : {{ figure.dimensions }} cm</li>
+                <li>Nombre de pièces : {{ figure.partsNumber }}</li>
+                <li>Ajouté le {{ figure.formatedCreatedAt }}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

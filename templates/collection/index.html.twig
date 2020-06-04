@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+{% block title %}Collection{% endblock %}
+{% block body %}
+<div class="container text-center justify-content-center">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="my-5">Les figurines à acheter !</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-8 text-right my-auto">
+            <h2 class="h4">Filtrer les figurines :</h2>
+        </div>
+        <div class="col-4 border-left">
+            {{ form_start(form) }}
+            <div class="col-12">
+            {{ form_row(form.maxPrice) }}
+            </div>
+            <div class="col-12">
+            {{ form_row(form.dimension) }}
+            </div>
+            <div class="col-12">
+            {{ form_row(form.options) }}
+            </div>
+            <div class="col-12">
+                <button class="btn btn-primary w-100">Filtrer</button>
+                <a href="{{ path('collection.index') }}" class="btn btn-warning w-100 mt-2">Réinitialiser la recherche</a>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+    <div class="row row-cols-3 justify-content-center">
+        {% for figure in collection %}
+        {{ include('collection/_collection.html.twig') }}
+        {% endfor %}
+    </div>
+    <div class="row">
+        <div class="pagination mx-auto">
+            {{ knp_pagination_render(collection) }}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/css/select2.min.css">
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/js/select2.min.js"></script>
+    <script>
+        $('select').select2();
+    </script>
+{% endblock %}

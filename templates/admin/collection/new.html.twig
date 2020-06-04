@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Ajouter une figurine' %}
+
+{% block body %}
+<div class="container text-center">
+    <h1 class="mt-5">Formulaire d'ajout de figurine</h1>
+    {{ include('admin/collection/_form.html.twig', {button: 'Ajouter'}) }}
+</div>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/css/select2.min.css">
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/js/select2.min.js"></script>
+    <script>
+        $('select').select2();
+    </script>
+{% endblock %}

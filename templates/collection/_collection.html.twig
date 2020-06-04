@@ -1,0 +1,14 @@
+<div class="col my-3">
+    <div class="card h-100">
+        <img src="{{ figure.image }}" class="card-img-top w-100" alt="Image de {{ figure.title }}">
+        <div class="card-body">
+            <h5 class="card-title">{{ figure.title }}</h5>
+            <p class="card-text">{{ figure.description }}</p>
+        </div>
+        <div class="card-footer">
+            <p class="text-left">Prix : {{ figure.price }}€</p>
+            <a href="{{ path('collection.show', {id: figure.id, slug: figure.slug}) }}" class="btn btn-primary">Voir les
+                détails</a>
+        </div>
+    </div>
+</div>
